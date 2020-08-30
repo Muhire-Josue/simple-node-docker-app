@@ -7,7 +7,7 @@ dotenv.config();
 
 const basename = _basename(__filename);
 const env = process.env.NODE_ENV;
-const config = require('../config.js')[env];
+const config = require('../config')[env];
 
 const db = {};
 
