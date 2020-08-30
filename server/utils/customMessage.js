@@ -1,4 +1,5 @@
 const messages = {
-  welcomeMessage: 'Welcome to this API'
+  welcomeMessage: 'Welcome to this API',
+  createUser: 'User created successfully'
 };
 export default messages;
