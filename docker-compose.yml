@@ -1,0 +1,32 @@
+# docker-compose.yml
+version: "3"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DEV_DB_USERNAME: user
+      DEV_DB_PASSWORD: pass
+      DEV_DB_NAME: db
+      DEV_DB_HOSTNAME: postgres
+      DEV_DB_PORT: 5432
+      DATABASE_URL: postgres://postgres:pass@postgres:5432/db
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    # command: bash -c "npm run migrations && npm run dev"
+    command: npm run dev
+    volumes:
+      - .:/app/
+      - /app/node_modules
+
+  postgres:
+    image: postgres:10.4-alpine
+    ports:
+      - "35432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db
